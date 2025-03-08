@@ -3,7 +3,7 @@ import { UserContext } from "../../context/context";
 import "./index.css";
 
 const InvoiceList = ({ invoicesList, setInvoicesList }) => {
-  const apiUrl = useContext(UserContext);
+  const API_URL = useContext(UserContext);
   const [selectedInvoice, setSelectedInvoice] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -18,7 +18,7 @@ const InvoiceList = ({ invoicesList, setInvoicesList }) => {
   const deleteInvoice = async (invoiceId) => {
     setLoading(true);
     try {
-      const response = await fetch(`${apiUrl}/delete-invoice/${invoiceId}`, {
+      const response = await fetch(`${API_URL}/delete-invoice/${invoiceId}`, {
         method: "DELETE",
       });
 

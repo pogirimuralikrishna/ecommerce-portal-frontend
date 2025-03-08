@@ -5,13 +5,13 @@ import InvoiceList from "../InvoiceList";
 
 const Home = () => {
   const [invoices, setInvoices] = useState([]);
-  const apiUrl = useContext(UserContext);
+  const API_URL = useContext(UserContext);
   const jwtToken = Cookies.get("jwtToken");
 
   useEffect(() => {
     const fetchInvoices = async () => {
       try {
-        const response = await fetch(`${apiUrl}/all-invoices`, {
+        const response = await fetch(`${API_URL}/all-invoices`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${jwtToken}`,

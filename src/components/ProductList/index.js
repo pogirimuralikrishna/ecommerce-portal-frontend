@@ -4,7 +4,7 @@ import "./index.css";
 import Cookies from "js-cookie";
 
 const ProductList = () => {
-    const apiUrl = useContext(UserContext);
+    const API_URL = useContext(UserContext);
     const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
@@ -16,7 +16,7 @@ const ProductList = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await fetch(`${apiUrl}/all-products`, {
+                const response = await fetch(`${API_URL}/all-products`, {
                     method: "GET",
                     headers: { Authorization: `Bearer ${jwtToken}` },
                 });
@@ -34,7 +34,7 @@ const ProductList = () => {
         };
 
         fetchProducts();
-    }, [apiUrl, jwtToken]);
+    }, [API_URL, jwtToken]);
 
     const handleSearchChange = (event) => {
         const query = event.target.value.toLowerCase();
@@ -53,7 +53,7 @@ const ProductList = () => {
 
     const addProduct = async () => {
         try {
-            const response = await fetch(`${apiUrl}/add-product`, {
+            const response = await fetch(`${API_URL}/add-product`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -78,7 +78,7 @@ const ProductList = () => {
     const deleteProduct = async (productId) => {
         setLoading(true);
         try {
-            const response = await fetch(`${apiUrl}/delete-product/${productId}`, {
+            const response = await fetch(`${API_URL}/delete-product/${productId}`, {
                 method: "DELETE",
                 headers: { Authorization: `Bearer ${jwtToken}` }
             });

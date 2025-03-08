@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import './index.css'
 
 const Authentication = ({existingUser}) => {
-    const apiUrl = useContext(UserContext)
+    const API_URL = useContext(UserContext)
     const navigate = useNavigate(); // Get the navigate function
     const [username, setUserName] = useState('')
     const [email, setEmail] = useState('')
@@ -23,7 +23,7 @@ const Authentication = ({existingUser}) => {
         }
         
        try{
-        const response = await fetch(`${apiUrl}${endPoint}`, {
+        const response = await fetch(`${API_URL}${endPoint}`, {
             method: "POST", 
             headers: {
                 "Content-Type": "application/json"

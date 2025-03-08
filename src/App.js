@@ -9,8 +9,12 @@ import './App.css'
 import Header from './components/Header';
 import ProductList from './components/ProductList';
 
+const API_URL = process.env.REACT_APP_API_URL;
+
+
+
 function App() {
-    const [apiUrl, setApiUrl] = useState('https://ecommerce-portal-backend.onrender.com/owner')
+    const [, setApiUrl] = useState('https://ecommerce-portal-backend.onrender.com/owner')
     const [isNewUser, changeUserStatus] = useState(true)
     const switchToLogin = () => {
         changeUserStatus(false)
@@ -20,7 +24,7 @@ function App() {
     }
     return (
         <BrowserRouter>
-         <UserContext.Provider value={apiUrl}>
+         <UserContext.Provider value={API_URL}>
                 <Header login = {switchToLogin} signUp = {switchToSignUp}/>    
                 <Routes>
                
